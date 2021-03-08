@@ -8,15 +8,21 @@
     <changeSet author = "viktor.savonin" id = "2">
         <preConditions onFail = "MARK_RAN">
             <not>
-                <tableExists tableName = "system_roles"/>
+                <tableExists tableName = "system_user_roles"/>
             </not>
         </preConditions>
 
-        <createTable tableName = "system_roles">
+        <createTable tableName = "system_user_roles">
             <column autoIncrement = "true" name = "id" type = "BIGINT">
                 <constraints primaryKey = "true"/>
             </column>
-            <column name = "role" type = "VARCHAR(100)">
+            <column name = "system_user_id" type = "BIGINT">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "system_module" type = "VARCHAR(50)">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "system_role" type = "VARCHAR(50)">
                 <constraints nullable = "false"/>
             </column>
             <column name = "version" type = "INT">
@@ -31,8 +37,46 @@
         </createTable>
 
         <rollback>
-            <dropTable tableName = "system_roles"
-                       cascadeConstraints = "true"/>
+            <dropTable tableName="system_user_roles"
+                       cascadeConstraints="true"/>
         </rollback>
     </changeSet>
+
+    <changeSet author = "viktor.savonin" id = "3">
+        <preConditions onFail = "MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists
+                        foreignKeyName = "fk_system_user_roles_system_user_id" />
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName = "system_user_roles"
+                                 baseColumnNames = "system_user_id"
+                                 constraintName = "fk_system_user_roles_system_user_id"
+                                 referencedTableName = "system_users"
+                                 referencedColumnNames = "id"/>
+        <rollback>
+            <dropForeignKeyConstraint baseTableName = "system_user_roles"
+                                      constraintName = "fk_system_user_roles_system_user_id"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author = "viktor.savonin" id = "4">
+        <preConditions onFail = "MARK_RAN">
+            <not>
+                <indexExists indexName = "ix_system_user_roles_system_user_id"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName = "ix_system_user_roles_system_user_id"
+                     tableName = "system_user_roles">
+            <column name = "system_user_id"/>
+        </createIndex>
+
+        <rollback>
+            <dropIndex tableName = "system_user_roles"
+                       indexName = "ix_system_user_roles_system_user_id"/>
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
