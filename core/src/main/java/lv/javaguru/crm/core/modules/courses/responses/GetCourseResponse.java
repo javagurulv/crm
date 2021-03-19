@@ -1,8 +1,8 @@
 package lv.javaguru.crm.core.modules.courses.responses;
 
-import lv.javaguru.crm.core.domain.Course;
 import lv.javaguru.crm.core.modules.core_error.CoreError;
 import lv.javaguru.crm.core.modules.core_error.CoreResponse;
+import lv.javaguru.crm.core.modules.courses.domain.Course;
 
 import java.util.List;
 
