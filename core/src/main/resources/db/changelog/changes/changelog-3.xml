@@ -5,50 +5,23 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
-    <changeSet author="team_1" id="5">
-        <preConditions onFail = "MARK_RAN">
+    <changeSet author="viktor.savonin" id="3">
+        <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName = "courses"/>
+                <foreignKeyConstraintExists
+                        foreignKeyName="fk_system_user_roles_system_user_id"/>
             </not>
         </preConditions>
 
-        <createTable tableName="courses">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="name" type="VARCHAR(100)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="course_type" type="VARCHAR(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="start_date" type="DATE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="end_date" type="DATE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="day_of_week" type="VARCHAR(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="start_time" type="TIME(0)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="end_time" type="TIME(0)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="open_class_date" type="DATE">
-            </column>
-            <column name="open_class_start_time" type="TIME(0)">
-            </column>
-            <column name="open_class_end_time" type="TIME(0)">
-            </column>
-            <column name="teacher" type="VARCHAR(50)">
-            </column>
-        </createTable>
+        <addForeignKeyConstraint baseTableName="system_user_roles"
+                                 baseColumnNames="system_user_id"
+                                 constraintName="fk_system_user_roles_system_user_id"
+                                 referencedTableName="system_users"
+                                 referencedColumnNames="id"/>
         <rollback>
-            <dropTable tableName = "courses"
-                       cascadeConstraints = "true"/>
+            <dropForeignKeyConstraint baseTableName="system_user_roles"
+                                      constraintName="fk_system_user_roles_system_user_id"/>
         </rollback>
     </changeSet>
+
 </databaseChangeLog>

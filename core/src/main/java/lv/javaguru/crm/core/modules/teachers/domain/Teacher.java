@@ -1,4 +1,4 @@
-package lv.javaguru.crm.core.domain;
+package lv.javaguru.crm.core.modules.teachers.domain;
 
 import lombok.Data;
 

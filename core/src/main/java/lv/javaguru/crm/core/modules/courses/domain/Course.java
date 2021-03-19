@@ -1,8 +1,10 @@
-package lv.javaguru.crm.core.domain;
+package lv.javaguru.crm.core.modules.courses.domain;
 
 import lombok.Data;
+import lv.javaguru.crm.core.modules.teachers.domain.Teacher;
+
 import javax.persistence.*;
-import java.time.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -15,23 +17,30 @@ public class Course {
     private String name;
     @Column(name = "course_type", nullable = false)
     private String courseType;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    private Date startDate;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private Date endDate;
     @Column(name = "day_of_week", nullable = false)
     private String dayOfWeek;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_time", nullable = false)
-    private LocalTime startTime;
+    private Date startTime;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_time", nullable = false)
-    private LocalTime endTime;
+    private Date endTime;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "open_class_date")
-    private LocalDate openClassDate;
+    private Date openClassDate;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "open_class_start_time")
-    private LocalTime openClassStartTime;
+    private Date openClassStartTime;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "open_class_end_time")
-    private LocalTime openClassEndTime;
-    @Column(name = "teacher")
-    private String teacher;
-
+    private Date openClassEndTime;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 }

@@ -1,6 +1,6 @@
-package lv.javaguru.crm.core.modules.courses.database;
+package lv.javaguru.crm.core.modules.courses.persistence;
 
-import lv.javaguru.crm.core.domain.Course;
+import lv.javaguru.crm.core.modules.courses.domain.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

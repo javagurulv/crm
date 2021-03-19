@@ -1,23 +1,24 @@
 package lv.javaguru.crm.core.modules.courses.services;
 
-import lv.javaguru.crm.core.domain.Course;
 import lv.javaguru.crm.core.modules.core_error.CoreError;
-import lv.javaguru.crm.core.modules.courses.database.JpaCourseRepository;
+import lv.javaguru.crm.core.modules.courses.domain.Course;
+import lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository;
 import lv.javaguru.crm.core.modules.courses.requests.AddCourseRequest;
 import lv.javaguru.crm.core.modules.courses.responses.AddCourseResponse;
 import lv.javaguru.crm.core.modules.courses.validators.AddCourseRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service
 @Transactional
 public class AddCourseService {
-
-    @Autowired private JpaCourseRepository courseRepository;
-    @Autowired private AddCourseRequestValidator validator;
+    @Autowired
+    private JpaCourseRepository courseRepository;
+    @Autowired
+    private AddCourseRequestValidator validator;
 
     public AddCourseResponse execute(AddCourseRequest request) {
         List<CoreError> errors = validator.validate(request);
