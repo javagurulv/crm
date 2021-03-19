@@ -43,7 +43,7 @@
             </column>
             <column name="open_class_end_time" type="TIME(0)">
             </column>
-            <column name="teacher" type="VARCHAR(50)">
+            <column name="teacher" type="BIGINT">
             </column>
 
         </createTable>

@@ -4,7 +4,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.*;
 
-//@Entity
+@Entity
 @Data
 @Table(name = "courses", schema = "javaguru_crm")
 public class Course {
@@ -24,14 +24,14 @@ public class Course {
     @Column(name = "start_time", nullable = false)
     private LocalTime startTime;
     @Column(name = "end_time", nullable = false)
-    private LocalDate endTime;
+    private LocalTime endTime;
     @Column(name = "open_class_date")
     private LocalDate openClassDate;
     @Column(name = "open_class_start_time")
     private LocalTime openClassStartTime;
     @Column(name = "open_class_end_time")
-    private LocalDate openClassEndTime;
-    @Column(name = "teacher", nullable = false)
-    private String teacher;
+    private LocalTime openClassEndTime;
+    @Column(name = "teacher")
+    private Teacher teacher;
 
 }
