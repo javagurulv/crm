@@ -41,5 +41,4 @@ public class AddCourseService {
         courseRepository.save(course);
         return new AddCourseResponse(course);
     }
-
 }
