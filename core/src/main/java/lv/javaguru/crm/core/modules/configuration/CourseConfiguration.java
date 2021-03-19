@@ -1,4 +1,4 @@
-package lv.javaguru.crm.core.modules.courses.configuration;
+package lv.javaguru.crm.core.modules.configuration;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
