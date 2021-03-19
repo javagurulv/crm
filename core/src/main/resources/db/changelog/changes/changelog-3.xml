@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
-    <changeSet author="igors.mihejevs" id="5">
+    <changeSet author="team_1" id="5">
         <preConditions onFail = "MARK_RAN">
             <not>
                 <tableExists tableName = "courses"/>
@@ -45,7 +45,6 @@
             </column>
             <column name="teacher" type="BIGINT">
             </column>
-
         </createTable>
         <rollback>
             <dropTable tableName = "courses"
