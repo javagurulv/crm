@@ -32,6 +32,6 @@ public class Course {
     @Column(name = "open_class_end_time")
     private LocalTime openClassEndTime;
     @Column(name = "teacher")
-    private Teacher teacher;
+    private String teacher;
 
 }

@@ -18,6 +18,6 @@ public class AddCourseRequest {
     private LocalDate openClassDate;
     private LocalTime openClassStartTime;
     private LocalTime openClassEndTime;
-    private Teacher teacher;
+    private String teacher;
 
 }
