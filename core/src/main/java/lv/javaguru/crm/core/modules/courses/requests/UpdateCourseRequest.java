@@ -6,8 +6,9 @@ import lv.javaguru.crm.core.modules.teachers.domain.Teacher;
 import java.util.Date;
 
 @Data
-public class AddCourseRequest {
+public class UpdateCourseRequest {
 
+    private Long id;
     private String name;
     private String courseType;
     private Date startDate;
@@ -19,4 +20,5 @@ public class AddCourseRequest {
     private Date openClassStartTime;
     private Date openClassEndTime;
     private Teacher teacher;
+
 }

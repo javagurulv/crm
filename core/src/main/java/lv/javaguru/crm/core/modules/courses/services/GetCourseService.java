@@ -7,11 +7,12 @@ import lv.javaguru.crm.core.modules.courses.responses.GetCourseResponse;
 import lv.javaguru.crm.core.modules.courses.validators.GetCourseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service
 @Transactional
 public class GetCourseService {
     @Autowired
