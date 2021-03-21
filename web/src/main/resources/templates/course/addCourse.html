@@ -6,10 +6,61 @@
     <meta name="description" content="JavaGuru CRM project">
     <meta name="author" content="JavaGuru">
     <!--<link type="text/css" href="/css/style.css">-->
-    <title>JavaGuru CRM</title>
+    <title>Add Course</title>
 </head>
 
 <body>
+
+<h3>Add Course</h3>
+
+<table>
+    <tr>
+        <td>Name:</td>
+        <td>Course Type:</td>
+        <td>Start Date:</td>
+        <td>End Date:</td>
+        <td>Day of Week:</td>
+        <td>Start Time:</td>
+        <td>End Time:</td>
+        <td>Open Class Date:</td>
+        <td>Open Class Start Time:</td>
+        <td>Open Class End Time:</td>
+        <td>Teacher:</td>
+    </tr>
+
+    <tr>
+        <form action="/course/addCourse" th:object="${request}" method="post">
+            <td><label> <input type="text" th:field="${request.name}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.courseType}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.startDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.endDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.dayOfWeek}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.startTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.endTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.openClassDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.openClassStartTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.openClassEndTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.teacher}"/> </label></td>
+            <td>
+                <input type="submit" value="Add Course"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </form>
+    </tr>
+
+
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+            <td th:text="${error.field}"></td>
+            <td th:text="${error.message}"></td>
+        </tr>
+    </td>
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
 
 </body>
 </html>
