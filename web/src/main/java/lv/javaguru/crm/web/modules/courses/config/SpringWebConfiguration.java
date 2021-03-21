@@ -11,7 +11,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "lv.javaguru.crm.web.modules.courses")
+@ComponentScan(basePackages = "lv.javaguru.crm.web.modules")
 public class SpringWebConfiguration implements WebMvcConfigurer {
 
     @Override
