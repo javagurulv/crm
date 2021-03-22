@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AddCourseController {
 
     @Autowired private AddCourseService addCourseService;
-    private Course course;
 
     @GetMapping(value = "/course/addCourse")
     public String showAddCoursePage(ModelMap modelMap) {
         modelMap.addAttribute("request", new AddCourseFieldRequest(new Course()));
         return "/course/addCourse";
     }
-/*
+
     @PostMapping("/course/addCourse")
-    public String processAddCourseRequest(@ModelAttribute(value = "request") AddCourseRequest request, ModelMap modelMap) {
-        AddCourseResponse response = addCourseService.execute(request);
+    public String processAddCourseRequest(@ModelAttribute(value = "request") AddCourseFieldRequest request, ModelMap modelMap)
+            throws NoSuchFieldException, IllegalAccessException {
+        AddCourseFieldResponse response = addCourseService.addCourse(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
             return "/course/addCourse";
         } else {
             return "redirect:/";
         }
-    }*/
+    }
 
 }
