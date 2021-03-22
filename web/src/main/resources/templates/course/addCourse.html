@@ -19,47 +19,47 @@
     <form action="/course/addCourse" th:object="${request}" method="post">
         <tr>
             <td>Course Name:</td>
-            <td><label> <input type="text" th:field="${request.name}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.name}"/> </label></td>
         </tr>
         <tr>
             <td>Course Type:</td>
-            <td><label> <input type="text" th:field="${request.courseType}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.courseType}"/> </label></td>
         </tr>
         <tr>
             <td>Start Date:</td>
-            <td><label> <input type="text" th:field="${request.startDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.startDate}"/> </label></td>
         </tr>
         <tr>
             <td>End Date:</td>
-            <td><label> <input type="text" th:field="${request.endDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.endDate}"/> </label></td>
         </tr>
         <tr>
             <td>Day of Week:</td>
-            <td><label> <input type="text" th:field="${request.dayOfWeek}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.dayOfWeek}"/> </label></td>
         </tr>
         <tr>
             <td>Start Time:</td>
-            <td><label> <input type="text" th:field="${request.startTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.startTime}"/> </label></td>
         </tr>
         <tr>
             <td>End Time:</td>
-            <td><label> <input type="text" th:field="${request.endTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.endTime}"/> </label></td>
         </tr>
         <tr>
             <td>Open Class Date:</td>
-            <td><label> <input type="text" th:field="${request.openClassDate}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.openClassDate}"/> </label></td>
         </tr>
         <tr>
             <td>Open Class Start Time:</td>
-            <td><label> <input type="text" th:field="${request.openClassStartTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.openClassStartTime}"/> </label></td>
         </tr>
         <tr>
             <td>Open Class End Time:</td>
-            <td><label> <input type="text" th:field="${request.openClassEndTime}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.openClassEndTime}"/> </label></td>
         </tr>
         <tr>
             <td>Teacher:</td>
-            <td><label> <input type="text" th:field="${request.teacher}"/> </label></td>
+            <td><label> <input type="text" th:field="${request.course.teacher}"/> </label></td>
         </tr>
         <tr>
             <td>
