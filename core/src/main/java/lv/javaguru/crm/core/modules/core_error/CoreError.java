@@ -17,5 +17,4 @@ public class CoreError {
     public String getMessage() {
         return message;
     }
-
 }
