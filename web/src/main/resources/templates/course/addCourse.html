@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaGuru CRM project">
+    <meta name="author" content="JavaGuru">
+    <link type="text/css" href="/css/style.css">
+    <title>Add Course</title>
+</head>
+
+<style>
+    table, tr, td {
+        padding: 1px;
+        /*border: 1px solid cadetblue;*/
+        border-radius: 5px;
+        border-collapse: collapse;
+        min-width: 100px;
+    }
+    td {
+        text-align: right;
+    }
+</style>
+
+<body>
+
+<img src="/images/JavaGuru%20Logo.png" alt="javaguru logo"/>
+
+<h3>Add Course</h3>
+
+<table>
+    <form action="/course/addCourse" th:object="${request}" method="post">
+        <tr>
+            <td>Course Name:</td>
+            <td><label> <input type="text" th:field="${request.course.name}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Course Type:</td>
+            <td><label> <input type="text" th:field="${request.course.courseType}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td><label> <input type="text" th:field="${request.course.startDate}"/> </label></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><label> <input type="text" th:field="${request.course.endDate}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Day of Week:</td>
+            <td><label> <input type="text" th:field="${request.course.dayOfWeek}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Start Time:</td>
+            <td><label> <input type="text" th:field="${request.course.startTime}"/> </label></td>
+        </tr>
+        <tr>
+            <td>End Time:</td>
+            <td><label> <input type="text" th:field="${request.course.endTime}"/> </label></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Open Class Date:</td>
+            <td><label> <input type="text" th:field="${request.course.openClassDate}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Open Class Start Time:</td>
+            <td><label> <input type="text" th:field="${request.course.openClassStartTime}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Open Class End Time:</td>
+            <td><label> <input type="text" th:field="${request.course.openClassEndTime}"/> </label></td>
+        </tr>
+        <tr>
+            <td>Teacher:</td>
+            <td><label> <input type="text" th:field="${request.course.teacher}"/> </label></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Add Course"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </tr>
+    </form>
+
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+            <td th:text="${error.field}"></td>
+            <td th:text="${error.message}"></td>
+        </tr>
+    </td>
+</table>
+
+<br>
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+</html>
