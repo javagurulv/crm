@@ -115,5 +115,4 @@ public class AddCourseServiceTest {
         assertEquals("courseType",serviceResponse.getErrors().get(0).getField());
         assertEquals("must not be null",serviceResponse.getErrors().get(0).getMessage());
     }
-
 }

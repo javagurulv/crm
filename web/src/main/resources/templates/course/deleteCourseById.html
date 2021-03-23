@@ -22,7 +22,7 @@
 
     <tr>
         <form action="/course/deleteCourseById" th:object="${request}" method="post">
-            <td><label> <input type="text" th:field="${request.courseId}"/> </label></td>
+            <td><label> <input type="number" th:field="${request.courseId}"/> </label></td>
             <td>
                 <input type="submit" value="Delete Course"/>
                 <input type="reset" value="Clear"/>
