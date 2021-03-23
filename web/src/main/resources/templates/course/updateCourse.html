@@ -12,14 +12,13 @@
 <body>
 
 <img src="/images/JavaGuru%20Logo.png" alt="javaguru logo"/>
-
 <h3>Update Course</h3>
 
 <table>
     <form action="/course/updateCourse" th:object="${request}" method="post">
         <tr>
             <td>Course Id:</td>
-            <td><input type="number" min="1" th:field="${request.id}"/></td>
+            <td><label> <input type="number" min="1" th:field="${request.id}"/> </label></td>
         </tr>
         <tr>
             <td>Course Name:</td>
