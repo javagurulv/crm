@@ -9,6 +9,19 @@
     <title>Add Course</title>
 </head>
 
+<style>
+    table, tr, td {
+        padding: 1px;
+        /*border: 1px solid cadetblue;*/
+        border-radius: 5px;
+        border-collapse: collapse;
+        min-width: 100px;
+    }
+    td {
+        text-align: right;
+    }
+</style>
+
 <body>
 
 <img src="/images/JavaGuru%20Logo.png" alt="javaguru logo"/>
@@ -44,6 +57,9 @@
         <tr>
             <td>End Time:</td>
             <td><label> <input type="text" th:field="${request.course.endTime}"/> </label></td>
+        </tr>
+        <tr>
+            <td></td>
         </tr>
         <tr>
             <td>Open Class Date:</td>
