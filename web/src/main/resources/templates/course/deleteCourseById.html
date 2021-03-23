@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaGuru CRM project">
+    <meta name="author" content="JavaGuru">
+    <link type="text/css" href="/css/style.css">
+    <title>Delete Course by Id</title>
+</head>
+
+<body>
+
+<img src="/images/JavaGuru%20Logo.png" alt="javaguru logo"/>
+
+<h3>Delete Course by Id</h3>
+
+<table>
+    <tr>
+        <td>Course Id:</td>
+    </tr>
+
+    <tr>
+        <form action="/course/deleteCourseById" th:object="${request}" method="post">
+            <td><label> <input type="text" th:field="${request.courseId}"/> </label></td>
+            <td>
+                <input type="submit" value="Delete Course"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </form>
+    </tr>
+
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+            <td th:text="${error.field}"></td>
+            <td th:text="${error.message}"></td>
+        </tr>
+    </td>
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+</body>
+</html>
