@@ -3,9 +3,13 @@ package lv.javaguru.crm.core.modules.students.domain;
 
 
 
+import lombok.Data;
+import lv.javaguru.crm.core.modules.courses.domain.Course;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "students", schema = "javaguru_crm")
 
 public class Student {
@@ -24,9 +28,9 @@ public class Student {
     private String email;
     @Column(name = "comment")
     private String comment;
-    /*@OneToMany
+    @OneToMany
     @JoinColumn(name = "courseId")
     private Course course;
-     */
+
 
 }

@@ -1,31 +1,26 @@
-package lv.javaguru.crm.core.modules.students;
+package lv.javaguru.crm.core.modules.students.persistance;
 
 import lv.javaguru.crm.core.modules.students.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface JpaStudentRepository extends JpaRepository<Student, Long> {
 
-    // List<Student> findAll()
-    List<Student> getCustomers();
-
-    // deleted
-    boolean addStudent(Student student);
-
-    // void deleteById(Long id)
-    boolean deleteStudentById(Long id);
+    void deleteById(Long id);
 
     Optional<Student> findById(Long id);
 
-    List<Student> searchAllByName(String name);
+    List<Student> findAllStudentsByName(String name);
 
-    List<Student> findStudentBySurname(String surname);
+    List<Student> findAllStudentBySurname(String surname);
 
-    List<Student> findStudentByPhone(String phoneNumber);
+    List<Student> findAllStudentByPhone(String phoneNumber);
 
-    List<Student> findStudentByEmail(String email);
+    List<Student> findAllStudentByEmail(String email);
 
     //
     List<Student> findStudentByAllCriterias(String searchRequest);
