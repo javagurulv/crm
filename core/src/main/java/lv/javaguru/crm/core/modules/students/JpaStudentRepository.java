@@ -1,11 +1,12 @@
 package lv.javaguru.crm.core.modules.students;
 
+import lv.javaguru.crm.core.modules.students.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface StudentDatabase extends JpaRepository<Student, Long> {
+public interface JpaStudentRepository extends JpaRepository<Student, Long> {
 
     // List<Student> findAll()
     List<Student> getCustomers();
