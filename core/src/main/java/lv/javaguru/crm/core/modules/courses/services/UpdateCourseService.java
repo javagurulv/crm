@@ -7,15 +7,17 @@ import lv.javaguru.crm.core.modules.courses.responses.UpdateCourseResponse;
 import lv.javaguru.crm.core.modules.courses.validators.UpdateCourseRequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @Transactional
 public class UpdateCourseService {
-
-    @Autowired private JpaCourseRepository courseRepository;
-    @Autowired private UpdateCourseRequestValidator validator;
+    @Autowired
+    private JpaCourseRepository courseRepository;
+    @Autowired
+    private UpdateCourseRequestValidator validator;
 
     public UpdateCourseResponse execute(UpdateCourseRequest request) {
         List<CoreError> errors = validator.validate(request);
