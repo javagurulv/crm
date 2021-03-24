@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaGuru CRM project">
+    <meta name="author" content="JavaGuru">
+    <link type="text/css" href="/css/style.css">
+    <title>Show all Courses</title>
+</head>
+
+<style>
+    table, tr, td {
+        padding: 1px;
+        border: 1px solid cadetblue;
+        border-radius: 5px;
+        border-collapse: collapse;
+        min-width: 100px;
+    }
+    td {
+        text-align: center;
+    }
+</style>
+
+<body>
+
+<img src="/images/JavaGuru%20Logo.png" alt="javaguru logo"/>
+<h3>Show all Courses</h3>
+
+<table>
+    <tr>
+        <td>Course Id</td>
+        <td>Course Name</td>
+        <td>Course Type</td>
+        <td>Start Date</td>
+        <td>End Date</td>
+        <td>Day of Week</td>
+        <td>Start Time</td>
+        <td>End Time</td>
+        <td>Open Class Date</td>
+        <td>Open Class Start Time</td>
+        <td>Open Class End Time</td>
+        <!--<td>Teacher</td>-->
+    </tr>
+
+    <td th:if="${courses != null}">
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.courseType}"></td>
+            <td th:text="${course.startDate}"></td>
+            <td th:text="${course.endDate}"></td>
+            <td th:text="${course.dayOfWeek}"></td>
+            <td th:text="${course.startTime}"></td>
+            <td th:text="${course.endTime}"></td>
+            <td th:text="${course.openClassDate}"></td>
+            <td th:text="${course.openClassStartTime}"></td>
+            <td th:text="${course.openClassEndTime}"></td>
+            <!--<td th:text="${course.teacher}"></td>-->
+        </tr>
+    </td>
+
+</table>
+
+<br>
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+</body>
+</html>

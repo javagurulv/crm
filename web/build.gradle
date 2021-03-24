@@ -17,7 +17,6 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.14
 targetCompatibility = 1.14
 
-
 dependencies {
 
     implementation project(':core')
@@ -28,6 +27,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf:2.4.1') {
         exclude (group: 'ch.qos.logback', module: 'logback-classic')
     }
+
+    compileOnly ('org.projectlombok:lombok:1.18+')
+    annotationProcessor ('org.projectlombok:lombok:1.18+')
 
     testCompile('junit:junit:4.13.1')
     testCompile('org.mockito:mockito-core:3.6.0')
