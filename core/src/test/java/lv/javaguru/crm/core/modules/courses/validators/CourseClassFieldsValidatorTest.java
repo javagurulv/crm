@@ -2,8 +2,8 @@ package lv.javaguru.crm.core.modules.courses.validators;
 
 import lv.javaguru.crm.core.modules.courses.domain.Course;
 import lv.javaguru.crm.core.modules.courses.domain.DayOfWeek;
-import lv.javaguru.crm.core.modules.courses.requests.AddCourseFieldRequest;
-import lv.javaguru.crm.core.modules.courses.responses.AddCourseFieldResponse;
+import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
+import lv.javaguru.crm.core.modules.courses.responses.CourseFieldResponse;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -17,7 +17,7 @@ public class CourseClassFieldsValidatorTest {
 
     @Test
     public void test_AllFieldsErrors() throws NoSuchFieldException, IllegalAccessException {
-        AddCourseFieldResponse response = validator.validate(new AddCourseFieldRequest(new Course()));
+        CourseFieldResponse response = validator.validate(new CourseFieldRequest(new Course()));
 
         assertTrue(response.hasErrors());
         assertEquals(7, response.getErrors().size());
@@ -41,7 +41,7 @@ public class CourseClassFieldsValidatorTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse response = validator.validate(new AddCourseFieldRequest(course));
+        CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertFalse(response.hasErrors());
         assertEquals(0, response.getErrors().size());
@@ -65,7 +65,7 @@ public class CourseClassFieldsValidatorTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse response = validator.validate(new AddCourseFieldRequest(course));
+        CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertTrue(response.hasErrors());
         assertEquals(1, response.getErrors().size());
@@ -90,7 +90,7 @@ public class CourseClassFieldsValidatorTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse response = validator.validate(new AddCourseFieldRequest(course));
+        CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertTrue(response.hasErrors());
         assertEquals(1, response.getErrors().size());
@@ -114,7 +114,7 @@ public class CourseClassFieldsValidatorTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse response = validator.validate(new AddCourseFieldRequest(course));
+        CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertTrue(response.hasErrors());
         assertEquals(1, response.getErrors().size());
