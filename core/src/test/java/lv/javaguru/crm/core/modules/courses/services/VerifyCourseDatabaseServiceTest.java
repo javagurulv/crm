@@ -23,7 +23,7 @@ public class VerifyCourseDatabaseServiceTest {
 
     @Test
     public void courseEqualNull() {
-        VerifyCourseResponse response = verifyCourseDatabaseService.isCourseExists(new VerifyCourseRequest(null));
+        VerifyCourseResponse response = verifyCourseDatabaseService.isCourse(new VerifyCourseRequest(null));
         assertFalse(response.isCourseExists());
     }
 
@@ -33,7 +33,7 @@ public class VerifyCourseDatabaseServiceTest {
         course.setId(10L);
 
         Mockito.when(courseRepository.existsById(10L)).thenReturn(false);
-        VerifyCourseResponse response = verifyCourseDatabaseService.isCourseExists(new VerifyCourseRequest(course));
+        VerifyCourseResponse response = verifyCourseDatabaseService.isCourse(new VerifyCourseRequest(course));
         assertFalse(response.isCourseExists());
     }
 
@@ -43,7 +43,7 @@ public class VerifyCourseDatabaseServiceTest {
         course.setId(1L);
 
         Mockito.when(courseRepository.existsById(1L)).thenReturn(true);
-        VerifyCourseResponse response = verifyCourseDatabaseService.isCourseExists(new VerifyCourseRequest(course));
+        VerifyCourseResponse response = verifyCourseDatabaseService.isCourse(new VerifyCourseRequest(course));
         assertTrue(response.isCourseExists());
     }
 }

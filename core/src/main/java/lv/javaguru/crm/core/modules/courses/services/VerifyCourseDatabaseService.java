@@ -14,7 +14,7 @@ public class VerifyCourseDatabaseService {
     @Autowired
     private JpaCourseRepository courseRepository;
 
-    public VerifyCourseResponse isCourseExists(VerifyCourseRequest request) {
+    public VerifyCourseResponse isCourse(VerifyCourseRequest request) {
         boolean courseExits = false;
         Course course = request.getCourse();
         if (course != null) {
