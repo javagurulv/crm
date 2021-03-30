@@ -1,7 +1,7 @@
 package lv.javaguru.crm.core.modules.students.service;
 
 import lv.javaguru.crm.core.modules.core_error.CoreError;
-import lv.javaguru.crm.core.modules.ordering.Paging;
+import lv.javaguru.crm.core.modules.ordering_and_paging.PageMaker;
 import lv.javaguru.crm.core.modules.students.domain.Student;
 import lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository;
 import lv.javaguru.crm.core.modules.students.request.GetStudentListRequest;
@@ -38,14 +38,6 @@ public class GetStudentListService {
                 "%" + request.getQueryString() + "%"
         );
 
-        return new GetStudentListResponse(null, pageMaker(listStudents, request.getPaging()));
-    }
-
-
-    private List<Student> pageMaker (List<Student> list, Paging paging) {
-        return list.stream()
-                .skip((paging.getPageNumber()-1)*paging.getPageSize())
-                .limit(paging.getPageSize())
-                .collect(Collectors.toList());
+        return new GetStudentListResponse(null, listStudents);
     }
 }

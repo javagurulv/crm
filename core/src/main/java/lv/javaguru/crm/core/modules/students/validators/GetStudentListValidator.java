@@ -13,6 +13,11 @@ public class GetStudentListValidator {
     public List<CoreError> validate(GetStudentListRequest request) {
         List<CoreError> errors = new ArrayList<>();
 
+        if (request.getQueryString().isBlank() || request.getQueryString() == null) {
+            CoreError error = new CoreError("query", "Must be not empty");
+            errors.add(error);
+        }
+
         return errors;
     }
 
