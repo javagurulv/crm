@@ -31,27 +31,19 @@ public class GetStudentListService {
             return new GetStudentListResponse(errors, null);
         }
 
-        String query = queryMaker(request);
-
-        List<Student> listStudents = studentRepository.findStudentByAllCriterias(query);
+        List<Student> listStudents = studentRepository.findByNameAndSurnameAndPhoneNumberAndComment(
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%"
+        );
 
         return new GetStudentListResponse(null, pageMaker(listStudents, request.getPaging()));
     }
 
-    //TODO does not work correctly yet!!!
-    // needed to add 'Ordering'
-    private String queryMaker (GetStudentListRequest request) {
-        return "SELECT * FROM student WHERE " +
-                "name + " +
-                "surname + " +
-                "phoneNumber + " +
-                "email " +
-                "LIKE %" + request.getQueryString() + "%";
-    }
 
     private List<Student> pageMaker (List<Student> list, Paging paging) {
-        return list
-                .stream()
+        return list.stream()
                 .skip((paging.getPageNumber()-1)*paging.getPageSize())
                 .limit(paging.getPageSize())
                 .collect(Collectors.toList());
