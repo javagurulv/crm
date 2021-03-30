@@ -25,6 +25,7 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
     //
     //List<Student> findStudentByAllCriterias(String searchRequest);
 
+    //@Query .......
     List<Student> findByNameAndSurnameAndPhoneNumberAndComment(String name, String surname, String phoneNumber, String comment);
 
     //@Query ("UPDATE Student s set s. ?? =: new??? WHERE s.id = :id")
