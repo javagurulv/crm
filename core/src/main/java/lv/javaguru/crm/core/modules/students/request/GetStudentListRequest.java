@@ -1,15 +1,15 @@
 package lv.javaguru.crm.core.modules.students.request;
 
-
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lv.javaguru.crm.core.modules.students.domain.Student;
+import lombok.Setter;
 
-import java.util.List;
-
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class GetStudentListRequest {
 
     @Getter
-    private List<Student> studentList;
-
+    @Setter
+    private String queryString;
 
 }
