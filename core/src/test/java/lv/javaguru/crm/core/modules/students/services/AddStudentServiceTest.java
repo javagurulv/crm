@@ -30,7 +30,7 @@ public class AddStudentServiceTest {
         AddStudentService addStudentService;
 
         @Test
-        public void noNameAddedToStudenttRequestTest() {
+        public void noNameAddedToStudentRequestTest() {
 
             Student firstStudent = new Student();
             firstStudent.setName("");
@@ -51,5 +51,28 @@ public class AddStudentServiceTest {
 
             Mockito.verifyNoInteractions(studentRepository);
         }
+
+    @Test
+    public void noSurnameAddedToStudentRequestTest() {
+
+        Student firstStudent = new Student();
+        firstStudent.setName("Jaroslav");
+        firstStudent.setSurname("");
+        firstStudent.setEmail("jaroslav.brutan@gmail.com");
+        firstStudent.setPhoneNumber("26926929");
+
+        AddStudentRequest request1 = new AddStudentRequest(firstStudent);
+
+        List<CoreError> errors1 = new ArrayList<>();
+        errors1.add(new CoreError("surname","This field can't be empty"));
+        Mockito.when(addStudentValidator.validate(request1)).thenReturn(errors1);
+
+        AddStudentResponse response = addStudentService.execute(request1);
+        assertEquals(response.hasErrors(),true);
+        assertEquals(response.getErrors().size(),1);
+        assertEquals(response.getErrors().get(0).getField(),"surname");
+
+        Mockito.verifyNoInteractions(studentRepository);
+    }
 
 }
