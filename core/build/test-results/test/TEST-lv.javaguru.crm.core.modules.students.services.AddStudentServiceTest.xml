@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-03-30T18:30:01" hostname="MacBook-Air-Anvars.local" time="1.491">
+<testsuite name="lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-03-31T20:46:14" hostname="MacBook-Air-Anvars.local" time="0.744">
   <properties/>
-  <testcase name="addedToStudentRequestTest" classname="lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest" time="1.491">
-    <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
-	at lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest.addedToStudentRequestTest(AddStudentServiceTest.java:141)
+  <testcase name="addedToStudentRequestTest" classname="lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest" time="0.744">
+    <failure message="org.mockito.exceptions.verification.NoInteractionsWanted: &#10;No interactions wanted here:&#10;-&gt; at lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest.addedToStudentRequestTest(AddStudentServiceTest.java:143)&#10;But found these interactions on mock 'studentRepository':&#10;-&gt; at lv.javaguru.crm.core.modules.students.service.AddStudentService.execute(AddStudentService.java:31)&#10;Actually, above is the only interaction with this mock." type="org.mockito.exceptions.verification.NoInteractionsWanted">org.mockito.exceptions.verification.NoInteractionsWanted: 
+No interactions wanted here:
+-&gt; at lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest.addedToStudentRequestTest(AddStudentServiceTest.java:143)
+But found these interactions on mock 'studentRepository':
+-&gt; at lv.javaguru.crm.core.modules.students.service.AddStudentService.execute(AddStudentService.java:31)
+Actually, above is the only interaction with this mock.
+	at lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest.addedToStudentRequestTest(AddStudentServiceTest.java:143)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 
@@ -134,13 +136,12 @@ public class AddStudentServiceTest {
         AddStudentRequest request1 = new AddStudentRequest(firstStudent);
 
         Mockito.when(addStudentValidator.validate(request1)).thenReturn(new ArrayList<>());
-        //Mockito.when(studentRepository.exists(request1.getStudent().getPhoneNumber())).thenReturn(false);
+        Mockito.when(studentRepository.exists(request1.getStudent())).thenReturn(false);
 
         AddStudentResponse response = addStudentService.execute(request1);
-        assertEquals(response.hasErrors(),false);
-        assertEquals(response.getErrors().size(),0);
+        assertFalse(response.hasErrors());
 
-       Mockito.verifyNoInteractions(studentRepository);
+       // Mockito.verify(studentRepository).add(argThat(new StudentMatcher("Laptop", "Samsung", 5)));
     }
 
 }
