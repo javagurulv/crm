@@ -1,0 +1,103 @@
+lv/javaguru/crm/core/modules/configuration/CourseConfiguration.java
+ lv.javaguru.crm.core.modules.configuration.CourseConfiguration
+lv/javaguru/crm/core/modules/courses/requests/GetCourseRequest.java
+ lv.javaguru.crm.core.modules.courses.requests.GetCourseRequest
+lv/javaguru/crm/core/modules/students/validators/AddStudentValidator.java
+ lv.javaguru.crm.core.modules.students.validators.AddStudentValidator
+lv/javaguru/crm/core/modules/courses/responses/GetAllCoursesResponse.java
+ lv.javaguru.crm.core.modules.courses.responses.GetAllCoursesResponse
+lv/javaguru/crm/core/modules/core_error/CoreError.java
+ lv.javaguru.crm.core.modules.core_error.CoreError
+lv/javaguru/crm/core/modules/students/validators/GetStudentListValidator.java
+ lv.javaguru.crm.core.modules.students.validators.GetStudentListValidator
+lv/javaguru/crm/core/modules/students/response/GetStudentListResponse.java
+ lv.javaguru.crm.core.modules.students.response.GetStudentListResponse
+lv/javaguru/crm/core/modules/courses/domain/DayOfWeek.java
+ lv.javaguru.crm.core.modules.courses.domain.DayOfWeek
+lv/javaguru/crm/core/modules/students/request/AddStudentRequest.java
+ lv.javaguru.crm.core.modules.students.request.AddStudentRequest
+lv/javaguru/crm/core/modules/courses/responses/AddCourseFieldResponse.java
+ lv.javaguru.crm.core.modules.courses.responses.AddCourseFieldResponse
+lv/javaguru/crm/core/modules/students/validators/UpdateStudentValidator.java
+ lv.javaguru.crm.core.modules.students.validators.UpdateStudentValidator
+lv/javaguru/crm/core/modules/courses/services/GetAllCoursesService.java
+ lv.javaguru.crm.core.modules.courses.services.GetAllCoursesService
+lv/javaguru/crm/core/modules/courses/services/GetCourseService.java
+ lv.javaguru.crm.core.modules.courses.services.GetCourseService
+lv/javaguru/crm/core/domain/BaseEntity.java
+ lv.javaguru.crm.core.domain.BaseEntity
+lv/javaguru/crm/core/modules/courses/requests/AddCourseFieldRequest.java
+ lv.javaguru.crm.core.modules.courses.requests.AddCourseFieldRequest
+lv/javaguru/crm/core/domain/SystemRole.java
+ lv.javaguru.crm.core.domain.SystemRole
+lv/javaguru/crm/core/modules/courses/persistence/JpaCourseRepository.java
+ lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository
+lv/javaguru/crm/core/modules/courses/validators/CourseIdValidator.java
+ lv.javaguru.crm.core.modules.courses.validators.CourseIdValidator
+lv/javaguru/crm/core/CrmApplication.java
+ lv.javaguru.crm.core.CrmApplication
+lv/javaguru/crm/core/modules/courses/responses/DeleteCourseResponse.java
+ lv.javaguru.crm.core.modules.courses.responses.DeleteCourseResponse
+lv/javaguru/crm/core/modules/students/request/VerifyStudentRequest.java
+ lv.javaguru.crm.core.modules.students.request.VerifyStudentRequest
+lv/javaguru/crm/core/modules/courses/validators/CourseClassFieldsValidator.java
+ lv.javaguru.crm.core.modules.courses.validators.CourseClassFieldsValidator
+lv/javaguru/crm/core/modules/teachers/domain/Teacher.java
+ lv.javaguru.crm.core.modules.teachers.domain.Teacher
+lv/javaguru/crm/core/modules/core_error/CoreResponse.java
+ lv.javaguru.crm.core.modules.core_error.CoreResponse
+lv/javaguru/crm/core/modules/students/domain/Student.java
+ lv.javaguru.crm.core.modules.students.domain.Student
+lv/javaguru/crm/core/domain/SystemModule.java
+ lv.javaguru.crm.core.domain.SystemModule
+lv/javaguru/crm/core/modules/students/response/VerifyStudentResponse.java
+ lv.javaguru.crm.core.modules.students.response.VerifyStudentResponse
+lv/javaguru/crm/core/modules/courses/responses/UpdateCourseResponse.java
+ lv.javaguru.crm.core.modules.courses.responses.UpdateCourseResponse
+lv/javaguru/crm/core/domain/SystemUser.java
+ lv.javaguru.crm.core.domain.SystemUser
+lv/javaguru/crm/core/modules/courses/domain/Course.java
+ lv.javaguru.crm.core.modules.courses.domain.Course
+lv/javaguru/crm/core/modules/courses/services/UpdateCourseService.java
+ lv.javaguru.crm.core.modules.courses.services.UpdateCourseService
+lv/javaguru/crm/core/modules/students/request/GetStudentListRequest.java
+ lv.javaguru.crm.core.modules.students.request.GetStudentListRequest
+lv/javaguru/crm/core/modules/courses/services/DeleteCourseService.java
+ lv.javaguru.crm.core.modules.courses.services.DeleteCourseService
+lv/javaguru/crm/core/modules/ordering_and_paging/Ordering.java
+ lv.javaguru.crm.core.modules.ordering_and_paging.Ordering
+ lv.javaguru.crm.core.modules.ordering_and_paging.Ordering$DirectBy
+lv/javaguru/crm/core/modules/courses/responses/GetCourseResponse.java
+ lv.javaguru.crm.core.modules.courses.responses.GetCourseResponse
+lv/javaguru/crm/core/modules/students/response/AddStudentResponse.java
+ lv.javaguru.crm.core.modules.students.response.AddStudentResponse
+lv/javaguru/crm/core/modules/courses/requests/DeleteCourseRequest.java
+ lv.javaguru.crm.core.modules.courses.requests.DeleteCourseRequest
+lv/javaguru/crm/core/modules/courses/services/AddCourseService.java
+ lv.javaguru.crm.core.modules.courses.services.AddCourseService
+lv/javaguru/crm/core/modules/ordering_and_paging/PageMaker.java
+ lv.javaguru.crm.core.modules.ordering_and_paging.PageMaker
+lv/javaguru/crm/core/modules/courses/validators/GetCourseValidator.java
+ lv.javaguru.crm.core.modules.courses.validators.GetCourseValidator
+lv/javaguru/crm/core/modules/courses/validators/AddCourseRequestValidator.java
+ lv.javaguru.crm.core.modules.courses.validators.AddCourseRequestValidator
+lv/javaguru/crm/core/modules/students/request/UpdateStudentRequest.java
+ lv.javaguru.crm.core.modules.students.request.UpdateStudentRequest
+lv/javaguru/crm/core/modules/courses/requests/UpdateCourseRequest.java
+ lv.javaguru.crm.core.modules.courses.requests.UpdateCourseRequest
+lv/javaguru/crm/core/domain/UserRole.java
+ lv.javaguru.crm.core.domain.UserRole
+lv/javaguru/crm/core/modules/courses/validators/UpdateCourseRequestValidator.java
+ lv.javaguru.crm.core.modules.courses.validators.UpdateCourseRequestValidator
+lv/javaguru/crm/core/modules/students/response/UpdateStudentResponse.java
+ lv.javaguru.crm.core.modules.students.response.UpdateStudentResponse
+lv/javaguru/crm/core/modules/students/persistance/JpaStudentRepository.java
+ lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository
+lv/javaguru/crm/core/modules/students/service/GetStudentListService.java
+ lv.javaguru.crm.core.modules.students.service.GetStudentListService
+lv/javaguru/crm/core/modules/students/service/UpdateStudentService.java
+ lv.javaguru.crm.core.modules.students.service.UpdateStudentService
+lv/javaguru/crm/core/modules/students/service/AddStudentService.java
+ lv.javaguru.crm.core.modules.students.service.AddStudentService
+lv/javaguru/crm/core/modules/students/service/VerifyStudentService.java
+ lv.javaguru.crm.core.modules.students.service.VerifyStudentService
