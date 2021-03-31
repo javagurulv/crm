@@ -13,16 +13,16 @@ public class StudentMatcher implements ArgumentMatcher<Student> {
         public StudentMatcher(String name, String surname, String phoneNumber, String email) {
             this.name = name;
             this.surname = surname;
-            this.phoneNumber = phoneNumber;
             this.email = email;
+            this.phoneNumber = phoneNumber;
         }
 
         @Override
         public boolean matches(Student student) {
             return student.getName().equals(name) &&
                     student.getSurname().equals(surname) &&
-                    student.getPhoneNumber().equals(phoneNumber) &&
-                    student.getEmail() == email;
+                    student.getEmail().equals(email) &&
+                    student.getPhoneNumber() == phoneNumber;
         }
     }
 

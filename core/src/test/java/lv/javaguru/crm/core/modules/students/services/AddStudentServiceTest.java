@@ -2,6 +2,7 @@ package lv.javaguru.crm.core.modules.students.services;
 
 import lv.javaguru.crm.core.modules.core_error.CoreError;
 import lv.javaguru.crm.core.modules.students.domain.Student;
+import lv.javaguru.crm.core.modules.students.matchers.StudentMatcher;
 import lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository;
 import lv.javaguru.crm.core.modules.students.request.AddStudentRequest;
 import lv.javaguru.crm.core.modules.students.response.AddStudentResponse;
@@ -130,7 +131,7 @@ public class AddStudentServiceTest {
         firstStudent.setId(1L);
         firstStudent.setName("Jaroslav");
         firstStudent.setSurname("Brutan");
-        firstStudent.setEmail("jaroslav.brutan");
+        firstStudent.setEmail("jaroslav.brutan@gmail.com");
         firstStudent.setPhoneNumber("26926929");
 
         AddStudentRequest request1 = new AddStudentRequest(firstStudent);
@@ -141,7 +142,8 @@ public class AddStudentServiceTest {
         AddStudentResponse response = addStudentService.execute(request1);
         assertFalse(response.hasErrors());
 
-       // Mockito.verify(studentRepository).add(argThat(new StudentMatcher("Laptop", "Samsung", 5)));
+       //Mockito.verify(studentRepository).add(argThat(new StudentMatcher("Jaroslav", "Brutan",
+        //                                                        "26926929","jaroslav.brutan@gmail.com")));
     }
 
 }

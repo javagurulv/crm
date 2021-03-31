@@ -33,4 +33,6 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
     //@Query ("UPDATE Student s set s. ?? =: new??? WHERE s.id = :id")
     // void updateStudent(@Param("id") Long id, @Param("new??") String new???);
     boolean updateStudent(Long id);
+
+    void add(Student student);
 }
