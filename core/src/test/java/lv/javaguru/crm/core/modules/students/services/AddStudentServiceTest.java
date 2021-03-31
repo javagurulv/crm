@@ -121,4 +121,26 @@ public class AddStudentServiceTest {
         Mockito.verifyNoInteractions(studentRepository);
     }
 
+    @Test
+    public void addedToStudentRequestTest() {
+
+        Student firstStudent = new Student();
+        firstStudent.setId(1L);
+        firstStudent.setName("Jaroslav");
+        firstStudent.setSurname("Brutan");
+        firstStudent.setEmail("jaroslav.brutan");
+        firstStudent.setPhoneNumber("26926929");
+
+        AddStudentRequest request1 = new AddStudentRequest(firstStudent);
+
+        Mockito.when(addStudentValidator.validate(request1)).thenReturn(new ArrayList<>());
+        //Mockito.when(studentRepository.exists(request1.getStudent().getPhoneNumber())).thenReturn(false);
+
+        AddStudentResponse response = addStudentService.execute(request1);
+        assertEquals(response.hasErrors(),false);
+        assertEquals(response.getErrors().size(),0);
+
+       Mockito.verifyNoInteractions(studentRepository);
+    }
+
 }
