@@ -31,7 +31,7 @@ public class GetStudentListServiceTest {
     GetStudentListService getStudentListService;
 
     @Test
-    public void emptyStudentRepositoryTest() {
+    public void emptyStudentListTest() {
 
         GetStudentListRequest request1 = new GetStudentListRequest("Jaroslav");
 
