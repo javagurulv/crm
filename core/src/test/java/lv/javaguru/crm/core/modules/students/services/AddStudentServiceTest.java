@@ -18,8 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -125,10 +124,9 @@ public class AddStudentServiceTest {
     }
 
     @Test
-    public void addedToStudentRequestTest() {
+    public void addedSuccessfullyNewStudentRequestTest() {
 
         Student firstStudent = new Student();
-        firstStudent.setId(1L);
         firstStudent.setName("Jaroslav");
         firstStudent.setSurname("Brutan");
         firstStudent.setEmail("jaroslav.brutan@gmail.com");
@@ -142,8 +140,31 @@ public class AddStudentServiceTest {
         AddStudentResponse response = addStudentService.execute(request1);
         assertFalse(response.hasErrors());
 
-       //Mockito.verify(studentRepository).add(argThat(new StudentMatcher("Jaroslav", "Brutan",
-        //                                                        "26926929","jaroslav.brutan@gmail.com")));
+       Mockito.verify(studentRepository).save(argThat(new StudentMatcher("Jaroslav", "Brutan",
+                                                                "26926929","jaroslav.brutan@gmail.com")));
+    }
+
+    @Test
+    public void notAddedNewStudentRequestTest() {
+
+        Student firstStudent = new Student();
+        firstStudent.setName("Jaroslav");
+        firstStudent.setSurname("Brutan");
+        firstStudent.setEmail("jaroslav.brutan@gmail.com");
+        firstStudent.setPhoneNumber("26926929");
+
+        AddStudentRequest request1 = new AddStudentRequest(firstStudent);
+
+        List<CoreError> errors1 = new ArrayList<>();
+        CoreError expectedError = new CoreError("database", "This student already exists in database");
+        errors1.add(expectedError);
+
+        Mockito.when(addStudentValidator.validate(request1)).thenReturn(new ArrayList<>());
+        Mockito.when(studentRepository.exists(request1.getStudent())).thenReturn(true);
+
+        AddStudentResponse response = addStudentService.execute(request1);
+        assertEquals(response.hasErrors(),true);
+        assertEquals(response.getErrors().size(),1);
     }
 
 }

@@ -34,5 +34,4 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
     // void updateStudent(@Param("id") Long id, @Param("new??") String new???);
     boolean updateStudent(Long id);
 
-    void add(Student student);
 }
