@@ -24,7 +24,7 @@ public class GetStudentListService {
     @Autowired
     private GetStudentListValidator validator;
 
-    public GetStudentListResponse getStudentList (GetStudentListRequest request) {
+    public GetStudentListResponse execute (GetStudentListRequest request) {
 
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
