@@ -39,7 +39,7 @@ public class GetStudentListServiceTest {
         CoreError expectedError = new CoreError("list", "Student list is empty");
         errors1.add(expectedError);
         Mockito.when(getStudentListValidator.validate(request1)).thenReturn(new ArrayList<>());
-        Mockito.when(studentRepository.getStudents()).thenReturn(new ArrayList<>());
+        Mockito.when(studentRepository.findAll()).thenReturn(new ArrayList<>());
 
         GetStudentListResponse response = getStudentListService.execute(request1);
         assertEquals(response.hasErrors(), true);
