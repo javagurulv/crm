@@ -10,15 +10,10 @@ import java.util.List;
 @Component
 public class GetStudentListValidator {
 
-    public List<CoreError> validate(GetStudentListRequest request) {
-        List<CoreError> errors = new ArrayList<>();
+    public List<CoreError> validate (GetStudentListRequest getStudentListRequest){
 
-        if (request.getQueryString().isBlank() || request.getQueryString() == null) {
-            CoreError error = new CoreError("query", "Must be not empty");
-            errors.add(error);
-        }
+        return new ArrayList<>();
 
-        return errors;
     }
 
 }
