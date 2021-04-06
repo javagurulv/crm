@@ -2,6 +2,7 @@ package lv.javaguru.crm.core.modules.students.services;
 
 import lv.javaguru.crm.core.modules.core_error.CoreError;
 import lv.javaguru.crm.core.modules.students.domain.Student;
+import lv.javaguru.crm.core.modules.students.matchers.StudentMatcher;
 import lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository;
 import lv.javaguru.crm.core.modules.students.request.AddStudentRequest;
 import lv.javaguru.crm.core.modules.students.response.AddStudentResponse;
@@ -17,7 +18,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 
@@ -119,6 +121,50 @@ public class AddStudentServiceTest {
         assertEquals(response.getErrors().get(0).getField(),"phone number");
 
         Mockito.verifyNoInteractions(studentRepository);
+    }
+
+    @Test
+    public void addedSuccessfullyNewStudentRequestTest() {
+
+        Student firstStudent = new Student();
+        firstStudent.setName("Jaroslav");
+        firstStudent.setSurname("Brutan");
+        firstStudent.setEmail("jaroslav.brutan@gmail.com");
+        firstStudent.setPhoneNumber("26926929");
+
+        AddStudentRequest request1 = new AddStudentRequest(firstStudent);
+
+        Mockito.when(addStudentValidator.validate(request1)).thenReturn(new ArrayList<>());
+        Mockito.when(studentRepository.exists(request1.getStudent())).thenReturn(false);
+
+        AddStudentResponse response = addStudentService.execute(request1);
+        assertFalse(response.hasErrors());
+
+       Mockito.verify(studentRepository).save(argThat(new StudentMatcher("Jaroslav", "Brutan",
+                                                                "26926929","jaroslav.brutan@gmail.com")));
+    }
+
+    @Test
+    public void notAddedNewStudentRequestTest() {
+
+        Student firstStudent = new Student();
+        firstStudent.setName("Jaroslav");
+        firstStudent.setSurname("Brutan");
+        firstStudent.setEmail("jaroslav.brutan@gmail.com");
+        firstStudent.setPhoneNumber("26926929");
+
+        AddStudentRequest request1 = new AddStudentRequest(firstStudent);
+
+        List<CoreError> errors1 = new ArrayList<>();
+        CoreError expectedError = new CoreError("database", "This student already exists in database");
+        errors1.add(expectedError);
+
+        Mockito.when(addStudentValidator.validate(request1)).thenReturn(new ArrayList<>());
+        Mockito.when(studentRepository.exists(request1.getStudent())).thenReturn(true);
+
+        AddStudentResponse response = addStudentService.execute(request1);
+        assertEquals(response.hasErrors(),true);
+        assertEquals(response.getErrors().size(),1);
     }
 
 }

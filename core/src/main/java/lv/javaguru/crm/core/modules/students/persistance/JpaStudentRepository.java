@@ -12,6 +12,8 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
 
     void deleteById(Long id);
 
+    List <Student> findAll();
+
     Optional<Student> findById(Long id);
 
     List<Student> findAllStudentsByName(String name);
@@ -22,6 +24,8 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findAllStudentByEmail(String email);
 
+    boolean exists(Student student);
+
     //
     //List<Student> findStudentByAllCriterias(String searchRequest);
 
@@ -31,4 +35,5 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
     //@Query ("UPDATE Student s set s. ?? =: new??? WHERE s.id = :id")
     // void updateStudent(@Param("id") Long id, @Param("new??") String new???);
     boolean updateStudent(Long id);
+
 }

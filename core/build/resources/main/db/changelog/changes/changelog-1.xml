@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author = "viktor.savonin" id = "1">
+        <preConditions onFail = "MARK_RAN">
+            <not>
+                <tableExists tableName = "system_users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName = "system_users">
+            <column autoIncrement = "true" name = "id" type = "BIGINT">
+                <constraints primaryKey = "true"/>
+            </column>
+            <column name = "login" type = "VARCHAR(200)">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "password" type = "VARCHAR(100)">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "version" type = "INT">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "created_date" type = "TIMESTAMP">
+                <constraints nullable = "false"/>
+            </column>
+            <column name = "updated_date" type = "TIMESTAMP">
+                <constraints nullable = "true"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName = "system_users"
+                       cascadeConstraints = "true"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

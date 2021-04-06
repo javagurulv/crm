@@ -15,6 +15,9 @@ public class GetStudentListResponse extends CoreResponse {
         this.studentList = studentList;
     }
 
+    public GetStudentListResponse(List<Student> students) {
+    }
+
     public List<Student> getStudentList() {
         return studentList;
     }

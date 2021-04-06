@@ -1,0 +1,8 @@
+lv/javaguru/crm/core/modules/courses/services/AddCourseServiceTest.java
+ lv.javaguru.crm.core.modules.courses.services.AddCourseServiceTest
+lv/javaguru/crm/core/modules/courses/services/DeleteCourseServiceTest.java
+ lv.javaguru.crm.core.modules.courses.services.DeleteCourseServiceTest
+lv/javaguru/crm/core/modules/courses/validators/CourseClassFieldsValidatorTest.java
+ lv.javaguru.crm.core.modules.courses.validators.CourseClassFieldsValidatorTest
+lv/javaguru/crm/core/modules/students/services/AddStudentServiceTest.java
+ lv.javaguru.crm.core.modules.students.services.AddStudentServiceTest
