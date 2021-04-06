@@ -28,8 +28,6 @@
             <column name="email" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="comment" type="VARCHAR(100)">
-            </column>
             <column name="courseId" type="BIGINT">
             </column>
         </createTable>
