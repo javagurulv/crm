@@ -26,8 +26,6 @@ public class Student {
     private String phoneNumber;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "comment")
-    private String comment;
     @OneToMany
     @JoinColumn(name = "courseId")
     private Course course;
