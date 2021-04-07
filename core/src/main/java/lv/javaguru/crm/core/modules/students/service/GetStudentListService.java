@@ -34,3 +34,17 @@ public class GetStudentListService {
         return new GetStudentListResponse(students);
     }
 }
+/*
+public GetStudentListResponse execute(GetStudentListRequest request) {
+        List<CoreError> errors = validator.validate(request);
+
+        List<Student> students = studentRepository.findAll();
+
+        if (students.findAll().isEmpty()) {
+            errors.add(new CoreError("database", "Database is empty"));
+            return new GetStudentListResponse(errors, null);
+        }
+
+        return new GetStudentListResponse(null, students);
+    }
+ */
