@@ -63,5 +63,6 @@ public class GetStudentListServiceTest {
 
         GetStudentListResponse response = getStudentListService.execute(request1);
         assertTrue(response.getStudentList().equals(students));
+
     }
 }
