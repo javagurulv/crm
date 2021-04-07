@@ -33,7 +33,6 @@ public class GetStudentListByCriteriaService {
 //  Returns all students with a name like it defined in request
         List<Student> students = studentRepository.findAllStudentsByName(request.getStudentListRequest());
 
-
         //        List<Student> students = studentRepository.findAll(request.getStudentListRequest());
 
         if (students.isEmpty()) {
