@@ -5,6 +5,7 @@ import lv.javaguru.crm.core.modules.students.domain.Student;
 import lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository;
 import lv.javaguru.crm.core.modules.students.request.GetStudentListRequest;
 import lv.javaguru.crm.core.modules.students.response.GetStudentListResponse;
+import lv.javaguru.crm.core.modules.students.validators.GetStudentListByCriteriaValidator;
 import lv.javaguru.crm.core.modules.students.validators.GetStudentListValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,13 @@ import java.util.List;
 
 @Service
 @Transactional
-public class GetStudentListService {
+public class GetStudentListByCriteriaService {
 
     @Autowired
     private JpaStudentRepository studentRepository;
 
     @Autowired
-    private GetStudentListValidator validator;
+    private GetStudentListByCriteriaValidator validator;
 
     public GetStudentListResponse execute(GetStudentListRequest request) {
         List<CoreError> errors = validator.validate(request);
@@ -34,3 +35,22 @@ public class GetStudentListService {
         return new GetStudentListResponse(students);
     }
 }
+
+// Iterable<T> findAll(Predicate); criteriaBuilder.or()
+
+    /*  List<CoreError> errors = validator.validate(request);
+        if (!errors.isEmpty()) {
+            return new GetStudentListResponse(errors, null);
+        }
+
+        List<Student> listStudents = studentRepository.findByNameAndSurnameAndPhoneNumberAndComment(
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%",
+                "%" + request.getQueryString() + "%"
+        );
+
+        return new GetStudentListResponse(null, listStudents);
+    }
+}
+*/
