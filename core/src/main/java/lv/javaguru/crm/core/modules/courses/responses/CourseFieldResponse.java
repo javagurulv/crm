@@ -5,8 +5,8 @@ import lv.javaguru.crm.core.modules.core_error.CoreResponse;
 
 import java.util.List;
 
-public class AddCourseFieldResponse extends CoreResponse {
-    public AddCourseFieldResponse(List<CoreError> coreError) {
+public class CourseFieldResponse extends CoreResponse {
+    public CourseFieldResponse(List<CoreError> coreError) {
         super(coreError);
     }
 }

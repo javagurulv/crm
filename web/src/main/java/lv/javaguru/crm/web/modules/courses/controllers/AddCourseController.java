@@ -1,8 +1,8 @@
 package lv.javaguru.crm.web.modules.courses.controllers;
 
 import lv.javaguru.crm.core.modules.courses.domain.Course;
-import lv.javaguru.crm.core.modules.courses.requests.AddCourseFieldRequest;
-import lv.javaguru.crm.core.modules.courses.responses.AddCourseFieldResponse;
+import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
+import lv.javaguru.crm.core.modules.courses.responses.CourseFieldResponse;
 import lv.javaguru.crm.core.modules.courses.services.AddCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +18,14 @@ public class AddCourseController {
 
     @GetMapping(value = "/course/addCourse")
     public String showAddCoursePage(ModelMap modelMap) {
-        modelMap.addAttribute("request", new AddCourseFieldRequest(new Course()));
+        modelMap.addAttribute("request", new CourseFieldRequest(new Course()));
         return "/course/addCourse";
     }
 
     @PostMapping("/course/addCourse")
-    public String processAddCourseRequest(@ModelAttribute(value = "request") AddCourseFieldRequest request, ModelMap modelMap)
+    public String processAddCourseRequest(@ModelAttribute(value = "request") CourseFieldRequest request, ModelMap modelMap)
             throws NoSuchFieldException, IllegalAccessException {
-        AddCourseFieldResponse response = addCourseService.addCourse(request);
+        CourseFieldResponse response = addCourseService.addCourse(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
             return "/course/addCourse";

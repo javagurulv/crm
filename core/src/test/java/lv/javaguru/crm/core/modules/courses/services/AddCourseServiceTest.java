@@ -3,8 +3,8 @@ package lv.javaguru.crm.core.modules.courses.services;
 import lv.javaguru.crm.core.modules.courses.domain.Course;
 import lv.javaguru.crm.core.modules.courses.domain.DayOfWeek;
 import lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository;
-import lv.javaguru.crm.core.modules.courses.requests.AddCourseFieldRequest;
-import lv.javaguru.crm.core.modules.courses.responses.AddCourseFieldResponse;
+import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
+import lv.javaguru.crm.core.modules.courses.responses.CourseFieldResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -27,8 +27,8 @@ public class AddCourseServiceTest {
 
     @Test
     public void test_Errors_NoSave() throws IllegalAccessException, NoSuchFieldException {
-        AddCourseFieldResponse serviceResponse = addCourseService
-                .addCourse(new AddCourseFieldRequest(new Course()));
+        CourseFieldResponse serviceResponse = addCourseService
+                .addCourse(new CourseFieldRequest(new Course()));
 
         Mockito.verify(courseRepository, Mockito.times(0)).save(new Course());
 
@@ -53,8 +53,8 @@ public class AddCourseServiceTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse serviceResponse = addCourseService
-                .addCourse(new AddCourseFieldRequest(course));
+        CourseFieldResponse serviceResponse = addCourseService
+                .addCourse(new CourseFieldRequest(course));
 
         Mockito.verify(courseRepository, Mockito.times(1)).save(course);
 
@@ -79,8 +79,8 @@ public class AddCourseServiceTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse serviceResponse = addCourseService
-                .addCourse(new AddCourseFieldRequest(course));
+        CourseFieldResponse serviceResponse = addCourseService
+                .addCourse(new CourseFieldRequest(course));
 
         Mockito.verify(courseRepository, Mockito.times(0)).save(course);
 
@@ -106,8 +106,8 @@ public class AddCourseServiceTest {
         Date endTime = timeFormatter.parse("22:00");
         course.setEndTime(endTime);
 
-        AddCourseFieldResponse serviceResponse = addCourseService
-                .addCourse(new AddCourseFieldRequest(course));
+        CourseFieldResponse serviceResponse = addCourseService
+                .addCourse(new CourseFieldRequest(course));
 
         Mockito.verify(courseRepository, Mockito.times(0)).save(course);
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="JavaGuru CRM project">
@@ -10,46 +9,35 @@
 </head>
 
 <style>
-    table, tr, td {
-        padding: 3px;
-        border: 1px solid cadetblue;
-        border-radius: 5px;
-        border-collapse: collapse;
-        min-width: 80px;
-    }
     td {
         text-align: right;
     }
 </style>
 
 <body>
-
 <img src="images/JavaGuru Logo.png" alt="javaguru logo"/>
 <img class="marginauto" src="images/CRM Logo.png" alt="crm logo"/>
-
-<table class="center">
-
-    <tr>
-        <td>User name:</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Password:</td>
-        <td></td>
-    </tr>
-</table>
-
+<form>
+    <table class="center">
+        <tr>
+            <td>User name:</td>
+            <td>
+                <form><label><input type="text" name="" value=""></label></form>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <form><label><input type="password" name="" value=""></label></form>
+            </td>
+        </tr>
+    </table>
+</form>
 <br>
 <div style="text-align:center">
-    <a href="course/main.html">Log in</a>
-    <p></p>
-    <p></p>
-    <a href="/course/addCourse">Add new course</a> <br>
-    <a href="/course/updateCourse">Update course</a> <br>
-    <a href="/course/deleteCourseById">Delete course</a> <br>
-    <a href="/course/showAllCourses">Show all courses</a> <br>
+    <form action="/course/main" method="get">
+        <input type="submit" name="">
+    </form>
 </div>
-
 </body>
-
 </html>

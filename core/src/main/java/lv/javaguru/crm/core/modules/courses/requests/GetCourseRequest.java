@@ -1,10 +1,12 @@
 package lv.javaguru.crm.core.modules.courses.requests;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
 public class GetCourseRequest {
+    @Getter
+    private final Long id;
 
-    private Long id;
-
+    public GetCourseRequest(Long id) {
+        this.id = id;
+    }
 }
