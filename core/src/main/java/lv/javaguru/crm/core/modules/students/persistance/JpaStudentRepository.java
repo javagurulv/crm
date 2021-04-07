@@ -14,6 +14,9 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
 
     List <Student> findAll();
 
+    //@Query ....... like ("UPDATE Student s set s. ?? =: new??? WHERE s.id = :id")
+    List <Student> findAll(String searchRequest);   // Iterable<T> findAll(Predicate); criteriaBuilder.or()
+
     Optional<Student> findById(Long id);
 
     List<Student> findAllStudentsByName(String name);
@@ -25,12 +28,6 @@ public interface JpaStudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAllStudentByEmail(String email);
 
     boolean exists(Student student);
-
-    //
-    //List<Student> findStudentByAllCriterias(String searchRequest);
-
-    //@Query .......
-    List<Student> findByNameAndSurnameAndPhoneNumberAndComment(String name, String surname, String phoneNumber, String comment);
 
     //@Query ("UPDATE Student s set s. ?? =: new??? WHERE s.id = :id")
     // void updateStudent(@Param("id") Long id, @Param("new??") String new???);

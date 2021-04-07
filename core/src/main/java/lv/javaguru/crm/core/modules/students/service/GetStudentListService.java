@@ -34,19 +34,3 @@ public class GetStudentListService {
         return new GetStudentListResponse(students);
     }
 }
-      /*  List<CoreError> errors = validator.validate(request);
-        if (!errors.isEmpty()) {
-            return new GetStudentListResponse(errors, null);
-        }
-
-        List<Student> listStudents = studentRepository.findByNameAndSurnameAndPhoneNumberAndComment(
-                "%" + request.getQueryString() + "%",
-                "%" + request.getQueryString() + "%",
-                "%" + request.getQueryString() + "%",
-                "%" + request.getQueryString() + "%"
-        );
-
-        return new GetStudentListResponse(null, listStudents);
-    }
-}
-*/
