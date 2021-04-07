@@ -30,8 +30,11 @@ public class GetStudentListByCriteriaService {
         if (!errors.isEmpty()) {
             return new GetStudentListResponse(errors, null);
         }
+//  Returns all students with a name like it defined in request
+        List<Student> students = studentRepository.findAllStudentsByName(request.getStudentListRequest());
 
-        List<Student> students = studentRepository.findAll(request.getStudentListRequest());
+
+        //        List<Student> students = studentRepository.findAll(request.getStudentListRequest());
 
         if (students.isEmpty()) {
             errors.add(new CoreError("database", "There is no data for this criteria."));
