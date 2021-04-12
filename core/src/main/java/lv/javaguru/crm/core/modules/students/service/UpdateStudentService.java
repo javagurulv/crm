@@ -3,9 +3,9 @@ package lv.javaguru.crm.core.modules.students.service;
 
 import lv.javaguru.crm.core.modules.core_error.CoreError;
 import lv.javaguru.crm.core.modules.students.persistance.JpaStudentRepository;
-import lv.javaguru.crm.core.modules.students.request.AddStudentRequest;
-import lv.javaguru.crm.core.modules.students.response.AddStudentResponse;
-import lv.javaguru.crm.core.modules.students.validators.AddStudentValidator;
+import lv.javaguru.crm.core.modules.students.request.UpdateStudentRequest;
+import lv.javaguru.crm.core.modules.students.response.UpdateStudentResponse;
+import lv.javaguru.crm.core.modules.students.validators.UpdateStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,21 +14,20 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AddStudentService {
+public class UpdateStudentService {
 
     @Autowired
     private JpaStudentRepository repository;
     @Autowired
-    private AddStudentValidator validator;
+    private UpdateStudentValidator validator;
 
-    public AddStudentResponse execute (AddStudentRequest request){
-
+    public UpdateStudentResponse execute (UpdateStudentRequest request){
         List<CoreError> errors = validator.validate(request);
+
         if (!errors.isEmpty()){
-            return new AddStudentResponse(errors);
+            return new UpdateStudentResponse(errors);
         }
 
-        repository.save(request.getStudent());
-        return new AddStudentResponse(request.getStudent());
+        return new UpdateStudentResponse(request.getStudent());
     }
 }
