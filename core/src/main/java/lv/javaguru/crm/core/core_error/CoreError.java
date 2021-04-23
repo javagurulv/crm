@@ -1,4 +1,4 @@
-package lv.javaguru.crm.core.modules.core_error;
+package lv.javaguru.crm.core.core_error;
 
 public class CoreError {
 

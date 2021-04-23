@@ -1,6 +1,6 @@
 package lv.javaguru.crm.core.modules.courses.services;
 
-import lv.javaguru.crm.core.modules.core_error.CoreError;
+import lv.javaguru.crm.core.core_error.CoreError;
 import lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository;
 import lv.javaguru.crm.core.modules.courses.requests.GetCourseRequest;
 import lv.javaguru.crm.core.modules.courses.responses.GetCourseResponse;

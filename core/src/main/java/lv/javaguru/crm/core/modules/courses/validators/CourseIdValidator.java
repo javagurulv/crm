@@ -1,6 +1,6 @@
 package lv.javaguru.crm.core.modules.courses.validators;
 
-import lv.javaguru.crm.core.modules.core_error.CoreError;
+import lv.javaguru.crm.core.core_error.CoreError;
 import lv.javaguru.crm.core.modules.courses.requests.DeleteCourseRequest;
 import lv.javaguru.crm.core.modules.courses.responses.DeleteCourseResponse;
 

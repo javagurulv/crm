@@ -1,4 +1,4 @@
-package lv.javaguru.crm.core.modules.configuration;
+package lv.javaguru.crm.core.configuration;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(value = "lv.javaguru.crm.core.modules.courses.persistence")
+@EnableJpaRepositories(value = "lv.javaguru.crm.core.modules")
 @EntityScan(basePackages = "lv.javaguru.crm.core.modules")
-@ComponentScan(basePackages = "lv.javaguru.crm.core.modules.courses")
+@ComponentScan(basePackages = "lv.javaguru.crm.core.modules")
 @EnableTransactionManagement
 public class CourseConfiguration {
     @Bean

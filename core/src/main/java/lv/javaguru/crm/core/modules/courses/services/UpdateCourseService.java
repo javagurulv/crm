@@ -1,6 +1,6 @@
 package lv.javaguru.crm.core.modules.courses.services;
 
-import lv.javaguru.crm.core.modules.core_error.CoreError;
+import lv.javaguru.crm.core.core_error.CoreError;
 import lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository;
 import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
 import lv.javaguru.crm.core.modules.courses.requests.UpdateCourseRequest;
@@ -25,7 +25,7 @@ public class UpdateCourseService {
     @Autowired
     private JpaCourseRepository courseRepository;
 
-    public UpdateCourseResponse updateCourse(UpdateCourseRequest request) throws NoSuchFieldException, IllegalAccessException {
+    public UpdateCourseResponse updateCourse(UpdateCourseRequest request) {
         List<CoreError> errors = new ArrayList<>();
 
         VerifyCourseResponse verifyCourseResponse = verifyCourseDatabaseService
@@ -39,9 +39,6 @@ public class UpdateCourseService {
         CourseFieldResponse response = addCourseService
                 .addCourse(new CourseFieldRequest(request.getCourse()));
 
-        if (response.getErrors().isEmpty()) {
-            courseRepository.save(request.getCourse());
-        }
         return new UpdateCourseResponse(response.getErrors());
     }
 }

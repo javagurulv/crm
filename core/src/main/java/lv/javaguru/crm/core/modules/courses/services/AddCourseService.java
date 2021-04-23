@@ -14,7 +14,7 @@ public class AddCourseService {
     @Autowired
     private JpaCourseRepository courseRepository;
 
-    public CourseFieldResponse addCourse(CourseFieldRequest request) throws IllegalAccessException, NoSuchFieldException {
+    public CourseFieldResponse addCourse(CourseFieldRequest request) {
 
         CourseFieldResponse courseClassErrors = new CourseClassFieldsValidator().validate(
                 new CourseFieldRequest(request.getCourse()));
