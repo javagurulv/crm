@@ -38,7 +38,7 @@ public class GetCourseServiceTest {
     @Test
     public void testCourseFoundedById() {
         Course course = new Course();
-        course.setName("Course");
+        course.setTitle("Course");
         course.setCourseType("Java 1");
 
         Mockito.when(courseRepository.findById(1L)).thenReturn(Optional.of(course));
@@ -47,7 +47,7 @@ public class GetCourseServiceTest {
 
         assertFalse(response.hasErrors());
 
-        assertEquals("Course", response.getCourse().getName());
+        assertEquals("Course", response.getCourse().getTitle());
         assertEquals("Java 1", response.getCourse().getCourseType());
     }
 }

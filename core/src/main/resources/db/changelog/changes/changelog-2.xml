@@ -60,23 +60,4 @@
                                       constraintName = "fk_system_user_roles_system_user_id"/>
         </rollback>
     </changeSet>
-
-    <changeSet author = "viktor.savonin" id = "4">
-        <preConditions onFail = "MARK_RAN">
-            <not>
-                <indexExists indexName = "ix_system_user_roles_system_user_id"/>
-            </not>
-        </preConditions>
-
-        <createIndex indexName = "ix_system_user_roles_system_user_id"
-                     tableName = "system_user_roles">
-            <column name = "system_user_id"/>
-        </createIndex>
-
-        <rollback>
-            <dropIndex tableName = "system_user_roles"
-                       indexName = "ix_system_user_roles_system_user_id"/>
-        </rollback>
-    </changeSet>
-
 </databaseChangeLog>

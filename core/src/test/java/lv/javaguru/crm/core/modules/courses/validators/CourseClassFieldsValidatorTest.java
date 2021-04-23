@@ -6,17 +6,13 @@ import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
 import lv.javaguru.crm.core.modules.courses.responses.CourseFieldResponse;
 import org.junit.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import static org.junit.Assert.*;
 
 public class CourseClassFieldsValidatorTest {
     private final CourseClassFieldsValidator validator = new CourseClassFieldsValidator();
 
     @Test
-    public void test_AllFieldsErrors() throws NoSuchFieldException, IllegalAccessException {
+    public void test_CourseClass_AllFieldsErrors() {
         CourseFieldResponse response = validator.validate(new CourseFieldRequest(new Course()));
 
         assertTrue(response.hasErrors());
@@ -24,22 +20,15 @@ public class CourseClassFieldsValidatorTest {
     }
 
     @Test
-    public void test_NoFieldsErrors() throws ParseException, NoSuchFieldException, IllegalAccessException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
+    public void test_NoFieldsErrors() {
         Course course = new Course();
-        course.setName("Name");
+        course.setTitle("Name");
         course.setCourseType("JAVA_1");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setStartDate("22/03/2021");
+        course.setEndDate("22/08/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
@@ -48,77 +37,40 @@ public class CourseClassFieldsValidatorTest {
     }
 
     @Test
-    public void test_NameEmptyFieldsErrors() throws ParseException, NoSuchFieldException, IllegalAccessException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
+    public void test_NameEmptyFieldsErrors() {
         Course course = new Course();
-        course.setName("");
+        course.setTitle("");
         course.setCourseType("JAVA_1");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setStartDate("22/03/2021");
+        course.setEndDate("22/08/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertTrue(response.hasErrors());
         assertEquals(1, response.getErrors().size());
-        assertEquals("name",response.getErrors().get(0).getField());
-        assertEquals("must not be empty",response.getErrors().get(0).getMessage());
+        assertEquals("Course", response.getErrors().get(0).getField());
+        assertEquals("Field [Course title] may not be empty", response.getErrors().get(0).getMessage());
     }
 
-    @Test
-    public void test_NameNullFieldsErrors() throws ParseException, NoSuchFieldException, IllegalAccessException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
 
+    @Test
+    public void test_EndDateNullFieldsErrors() {
         Course course = new Course();
+        course.setTitle("Name");
         course.setCourseType("JAVA_1");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setStartDate("22/03/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
 
         assertTrue(response.hasErrors());
         assertEquals(1, response.getErrors().size());
-        assertEquals("name",response.getErrors().get(0).getField());
-        assertEquals("must not be null",response.getErrors().get(0).getMessage());
-    }
-
-    @Test
-    public void test_EndDateNullFieldsErrors() throws ParseException, NoSuchFieldException, IllegalAccessException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
-        Course course = new Course();
-        course.setName("name");
-        course.setCourseType("JAVA_1");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
-
-        CourseFieldResponse response = validator.validate(new CourseFieldRequest(course));
-
-        assertTrue(response.hasErrors());
-        assertEquals(1, response.getErrors().size());
-        assertEquals("endDate",response.getErrors().get(0).getField());
-        assertEquals("must not be null",response.getErrors().get(0).getMessage());
+        assertEquals("Course", response.getErrors().get(0).getField());
+        assertEquals("Field [Course end date] may not be empty", response.getErrors().get(0).getMessage());
     }
 }

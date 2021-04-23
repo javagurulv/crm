@@ -14,11 +14,10 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeleteCourseServiceTest {
-    private final DeleteCourseService deleteService = new DeleteCourseService();
     @Mock
     private JpaCourseRepository courseRepository;
     @InjectMocks
-    private DeleteCourseService deleteCourseService;
+    private final DeleteCourseService deleteService = new DeleteCourseService();
 
     @Test
     public void delete_Error_Id_Null() {
@@ -31,7 +30,7 @@ public class DeleteCourseServiceTest {
 
     @Test
     public void delete_Success() {
-        DeleteCourseResponse response = deleteCourseService.deleteCourse(new DeleteCourseRequest(1L));
+        DeleteCourseResponse response = deleteService.deleteCourse(new DeleteCourseRequest(1L));
 
         Mockito.verify(courseRepository, Mockito.times(1)).deleteCourseById(1L);
 

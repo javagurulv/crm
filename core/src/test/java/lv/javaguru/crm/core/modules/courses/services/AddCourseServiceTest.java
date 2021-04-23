@@ -12,10 +12,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,7 +22,7 @@ public class AddCourseServiceTest {
     private AddCourseService addCourseService;
 
     @Test
-    public void test_Errors_NoSave() throws IllegalAccessException, NoSuchFieldException {
+    public void test_Errors_NoSave() {
         CourseFieldResponse serviceResponse = addCourseService
                 .addCourse(new CourseFieldRequest(new Course()));
 
@@ -36,22 +32,15 @@ public class AddCourseServiceTest {
     }
 
     @Test
-    public void test_NoErrors_Save() throws IllegalAccessException, NoSuchFieldException, ParseException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
+    public void test_NoErrors_Save() {
         Course course = new Course();
-        course.setName("Name");
+        course.setTitle("Name");
         course.setCourseType("JAVA_1");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setStartDate("22/03/2021");
+        course.setEndDate("22/08/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse serviceResponse = addCourseService
                 .addCourse(new CourseFieldRequest(course));
@@ -62,22 +51,15 @@ public class AddCourseServiceTest {
     }
 
     @Test
-    public void test_CourseTypeEmptyError_NoSave() throws IllegalAccessException, NoSuchFieldException, ParseException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
+    public void test_CourseTypeEmptyError_NoSave() {
         Course course = new Course();
-        course.setName("Name");
+        course.setTitle("Name");
         course.setCourseType("");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setStartDate("22/03/2021");
+        course.setEndDate("22/08/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse serviceResponse = addCourseService
                 .addCourse(new CourseFieldRequest(course));
@@ -85,26 +67,19 @@ public class AddCourseServiceTest {
         Mockito.verify(courseRepository, Mockito.times(0)).save(course);
 
         assertTrue(serviceResponse.hasErrors());
-        assertEquals("courseType",serviceResponse.getErrors().get(0).getField());
-        assertEquals("must not be empty",serviceResponse.getErrors().get(0).getMessage());
+        assertEquals("Course", serviceResponse.getErrors().get(0).getField());
+        assertEquals("Field [Course type] may not be empty", serviceResponse.getErrors().get(0).getMessage());
     }
 
     @Test
-    public void test_CourseTypeNullError_NoSave() throws IllegalAccessException, NoSuchFieldException, ParseException {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm");
-
+    public void test_CourseTypeNullError_NoSave() {
         Course course = new Course();
-        course.setName("Name");
-        Date startDate = dateFormatter.parse("22/03/2021");
-        course.setStartDate(startDate);
-        Date endDate = dateFormatter.parse("22/08/2021");
-        course.setEndDate(endDate);
-        course.setDayOfWeek(DayOfWeek.Tuesday.toString());
-        Date startTime = timeFormatter.parse("19:00");
-        course.setStartTime(startTime);
-        Date endTime = timeFormatter.parse("22:00");
-        course.setEndTime(endTime);
+        course.setTitle("Name");
+        course.setStartDate("22/03/2021");
+        course.setEndDate("22/08/2021");
+        course.setDayOfWeek(DayOfWeek.Tuesday);
+        course.setStartTime("19:00");
+        course.setEndTime("22:00");
 
         CourseFieldResponse serviceResponse = addCourseService
                 .addCourse(new CourseFieldRequest(course));
@@ -112,7 +87,7 @@ public class AddCourseServiceTest {
         Mockito.verify(courseRepository, Mockito.times(0)).save(course);
 
         assertTrue(serviceResponse.hasErrors());
-        assertEquals("courseType",serviceResponse.getErrors().get(0).getField());
-        assertEquals("must not be null",serviceResponse.getErrors().get(0).getMessage());
+        assertEquals("Course", serviceResponse.getErrors().get(0).getField());
+        assertEquals("Field [Course type] may not be empty", serviceResponse.getErrors().get(0).getMessage());
     }
 }

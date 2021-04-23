@@ -1,8 +1,7 @@
 package lv.javaguru.crm.core.modules.courses.services;
 
-import lv.javaguru.crm.core.modules.core_error.CoreError;
+import lv.javaguru.crm.core.core_error.CoreError;
 import lv.javaguru.crm.core.modules.courses.domain.Course;
-import lv.javaguru.crm.core.modules.courses.persistence.JpaCourseRepository;
 import lv.javaguru.crm.core.modules.courses.requests.CourseFieldRequest;
 import lv.javaguru.crm.core.modules.courses.requests.UpdateCourseRequest;
 import lv.javaguru.crm.core.modules.courses.requests.VerifyCourseRequest;
@@ -27,13 +26,11 @@ public class UpdateCourseServiceTest {
     private VerifyCourseDatabaseService verifyCourseDatabaseService;
     @Mock
     private AddCourseService addCourseService;
-    @Mock
-    private JpaCourseRepository courseRepository;
     @InjectMocks
     private UpdateCourseService updateCourseService;
 
     @Test
-    public void courseNotExistsInDataBase() throws NoSuchFieldException, IllegalAccessException {
+    public void courseNotExistsInDataBase() {
         Mockito.doReturn(new VerifyCourseResponse(false))
                 .when(verifyCourseDatabaseService).isCourse(Mockito.any(VerifyCourseRequest.class));
 
@@ -47,7 +44,7 @@ public class UpdateCourseServiceTest {
     }
 
     @Test
-    public void courseUpdated() throws NoSuchFieldException, IllegalAccessException {
+    public void courseUpdated() {
         Mockito.doReturn(new VerifyCourseResponse(true))
                 .when(verifyCourseDatabaseService).isCourse(Mockito.any(VerifyCourseRequest.class));
 
@@ -59,17 +56,16 @@ public class UpdateCourseServiceTest {
                 .updateCourse(new UpdateCourseRequest(new Course()));
 
         assertFalse(response.hasErrors());
-        Mockito.verify(courseRepository,Mockito.times(1)).save(new Course());
     }
 
     @Test
-    public void courseFieldsContainsErrors() throws NoSuchFieldException, IllegalAccessException {
+    public void courseFieldsContainsErrors() {
         Mockito.doReturn(new VerifyCourseResponse(true))
                 .when(verifyCourseDatabaseService).isCourse(Mockito.any(VerifyCourseRequest.class));
 
         List<CoreError> errors = new ArrayList<>();
-        errors.add(new CoreError("name","must not be null"));
-        errors.add(new CoreError("courseType","must not be null"));
+        errors.add(new CoreError("Course", "Field [Course title] may not be empty"));
+        errors.add(new CoreError("Course", "Field [Course type] may not be empty"));
         Mockito.doReturn(new CourseFieldResponse(errors))
                 .when(addCourseService).addCourse(Mockito.any(CourseFieldRequest.class));
 
@@ -77,10 +73,9 @@ public class UpdateCourseServiceTest {
                 .updateCourse(new UpdateCourseRequest(new Course()));
 
         assertTrue(response.hasErrors());
-        assertEquals("name",response.getErrors().get(0).getField());
-        assertEquals("must not be null",response.getErrors().get(0).getMessage());
-        assertEquals("courseType",response.getErrors().get(1).getField());
-        assertEquals("must not be null",response.getErrors().get(1).getMessage());
-        Mockito.verify(courseRepository,Mockito.times(0)).save(new Course());
+        assertEquals("Course", response.getErrors().get(0).getField());
+        assertEquals("Field [Course title] may not be empty", response.getErrors().get(0).getMessage());
+        assertEquals("Course", response.getErrors().get(1).getField());
+        assertEquals("Field [Course type] may not be empty", response.getErrors().get(1).getMessage());
     }
 }

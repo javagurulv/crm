@@ -26,17 +26,17 @@ jar {
 }
 
 dependencies {
+    compileOnly ('org.projectlombok:lombok:1.18+')
+    annotationProcessor ('org.projectlombok:lombok:1.18+')
     compile('mysql:mysql-connector-java:8.0.22')
     compile('org.apache.commons:commons-dbcp2:2.8.0')
     compile('org.hibernate:hibernate-core:5.4.25.Final')
-
-    compile('org.springframework.boot:spring-boot-starter-data-jpa:2.4.1') {
+    implementation('com.googlecode.libphonenumber:libphonenumber:8.12.21')
+    implementation('commons-validator:commons-validator:1.7')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa:2.4.5') {
         exclude (group: 'ch.qos.logback', module: 'logback-classic')
     }
-
-    compileOnly ('org.projectlombok:lombok:1.18+')
-    annotationProcessor ('org.projectlombok:lombok:1.18+')
-
+    implementation('org.springframework.boot:spring-boot-starter-validation:2.4.5')
     compile ('org.liquibase:liquibase-core:4.2.2')
 
     testCompile('junit:junit:4.13.1')

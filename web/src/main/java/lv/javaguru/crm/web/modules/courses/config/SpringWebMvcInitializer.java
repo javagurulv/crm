@@ -1,6 +1,6 @@
 package lv.javaguru.crm.web.modules.courses.config;
 
-import lv.javaguru.crm.core.modules.configuration.CourseConfiguration;
+import lv.javaguru.crm.core.configuration.CourseConfiguration;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
